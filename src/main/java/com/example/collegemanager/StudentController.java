@@ -19,7 +19,7 @@ public class StudentController {
     public  ResponseEntity<List<Student>> fetchAllStudents(){
     try{
         List<Student> _students = studentService.getAllStudents();
-        return new ResponseEntity<>(_students, HttpStatus.FOUND);
+        return new ResponseEntity<>(_students, HttpStatus.OK);
     }catch(Exception e){
         return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 }
@@ -33,7 +33,7 @@ public class StudentController {
             if(_studentData == null){
                 return new ResponseEntity<>(null,  HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<>(_studentData,  HttpStatus.FOUND);
+            return new ResponseEntity<>(_studentData,  HttpStatus.OK);
 
         }catch(Exception e){
             System.out.println(e.toString());
@@ -71,7 +71,7 @@ public class StudentController {
                 _studentRes.setFeePaid(true);
                 studentService.saveStudent(_studentRes);
             }
-            return new ResponseEntity<>(_studentRes,HttpStatus.FOUND);
+            return new ResponseEntity<>(_studentRes,HttpStatus.OK);
 
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
